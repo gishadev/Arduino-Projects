@@ -6,13 +6,13 @@ int bPin = 5;
 IRrecv IR(IRPin);
 decode_results cmd;
 
-const long PlayCmd = 0xFFC23D;
-const long OneCmd = 0xFF30CF;
-const long TwoCmd = 0xFF18E7;
-const long ThreeCmd = 0xFF7A85;
-const long EQCmd = 0xFF906F;
-const long PlusCmd = 0xFFA857;
-const long MinusCmd = 0xFFE01F;
+const long PlayCmd = 0xFF00FF;
+const long RedCmd = 0xFFA05F;
+const long GreenCmd = 0xFFE01F;
+const long BlueCmd = 0xFF609F;
+const long DiscoCmd = 0xFF10EF;
+const long PlusCmd = 0xFF20DF;
+const long MinusCmd = 0xFF40BF;
 
 float dimStep = 0.25;
 float rVal, gVal, bVal;
@@ -47,17 +47,17 @@ void loop()
     ChangeDim(-dimStep);
     break;
     
-    case OneCmd:
+    case RedCmd:
     SetColor(1.,0.,0.);
     break;
-    case TwoCmd:
+    case GreenCmd:
     SetColor(0.,1.,0.);
     break;
-    case ThreeCmd:
+    case BlueCmd:
     SetColor(0.,0.,1.);
     break;
 
-    case EQCmd:
+    case DiscoCmd:
     ActivateDiscoMode();
     break;
   }
